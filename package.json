@@ -1,0 +1,21 @@
+{
+  "name": "rcrd_api",
+  "version": "1.0.0",
+  "description": "API for rcrd portfolio and lab apps",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "Ricardo Gouveia",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

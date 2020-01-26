@@ -1,0 +1,44 @@
+{
+  "projects": [
+    {
+      "title": "Pontonet",
+      "link": "http://pontonet.com.br/",
+      "date": "22 de Março de 2019",
+      "type": "Wordpress Dev",
+      "color": "#34495e",
+      "image": "https://raw.githubusercontent.com/ricardogouveia3/rcrd-portfolio/master/assets/img/portfolio/pontonet.jpg"
+    },
+    {
+      "title": "7Dev Tapajós Code Studio",
+      "link": "https://7dev-codestudio.github.io/",
+      "date": "11 de Junho de 2018",
+      "type": "UI & Dev",
+      "color": "#f1c40f",
+      "image": "https://raw.githubusercontent.com/ricardogouveia3/rcrd-portfolio/master/assets/img/portfolio/7dev.jpg"
+    },
+    {
+      "title": "Espaço Ki",
+      "link": "http://espacokisantarem.com.br/",
+      "date": "30 de Maio de 2018",
+      "type": "Wordpress Dev",
+      "color": "#34495e",
+      "image": "https://raw.githubusercontent.com/ricardogouveia3/rcrd-portfolio/master/assets/img/portfolio/espaco-ki.jpg"
+    },
+    {
+      "title": "Front-end Week 2k19",
+      "link": "http://frontendweek.com.br/",
+      "date": "18 de Abril de 2018",
+      "type": "UI & Dev",
+      "color": "#f1c40f",
+      "image": "https://raw.githubusercontent.com/ricardogouveia3/rcrd-portfolio/master/assets/img/portfolio/few-2k18.jpg"
+    },
+    {
+      "title": "Devinsanta",
+      "link": "http://devinsanta.github.io/",
+      "date": "15 de Abril de 2017",
+      "type": "UI & Dev",
+      "color": "#f1c40f",
+      "image": "https://raw.githubusercontent.com/ricardogouveia3/rcrd-portfolio/master/assets/img/portfolio/devinsanta.jpg"
+    }
+  ]
+}

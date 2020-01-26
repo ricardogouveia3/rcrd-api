@@ -12,7 +12,7 @@ const enUSdic = require('./apps/mpg/words_reduce_en.json');
 // Global functions
 const hundredRandom = (dic) => {
   const numberSelected = 100;
-  let selectedWords = []
+  let selectedWords = [];
 
   while (selectedWords.length < numberSelected) {
     let word = dic[Math.floor(Math.random() * dic.length)];
@@ -42,4 +42,5 @@ app.get("/mpg/br", (req, res, next) => {
 
 
 // App start
-app.listen(3000, () => { });
+let port = process.env.PORT || 8080;
+app.listen(port);

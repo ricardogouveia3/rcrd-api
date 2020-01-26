@@ -8,6 +8,13 @@ const portfolio = require('./apps/rcrd/portfolio.json');
 const ptBRdic = require('./apps/mpg/words_reduce_br.json');
 const enUSdic = require('./apps/mpg/words_reduce_en.json');
 
+// Global config
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 
 // Global functions
 const hundredRandom = (dic) => {

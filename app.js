@@ -2,51 +2,36 @@
 const express = require("express");
 const app = express();
 
-// Data files
-const portfolio = require('./apps/rcrd/portfolio.json');
+// Modules
+const mpg = require('./modules/mpg');
+const labs = require('./modules/labs');
+const portfolio = require('./modules/portfolio');
 
-const ptBRdic = require('./apps/mpg/words_reduce_br.json');
-const enUSdic = require('./apps/mpg/words_reduce_en.json');
 
 // Global config
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
 
-// Global functions
-const hundredRandom = (dic) => {
-  const numberSelected = 100;
-  let selectedWords = [];
-
-  while (selectedWords.length < numberSelected) {
-    let word = dic[Math.floor(Math.random() * dic.length)];
-
-    if(!selectedWords.includes(word)){
-      selectedWords.push(word);
-    }
-  }
-
-  selectedWords.sort();
-  return selectedWords;
-}
-
-
 // Endpoints
 app.get("/rcrd/portfolio", (req, res, next) => {
-  res.send(portfolio);
+  res.send(portfolio.data);
+});
+
+app.get("/rcrd/labs", (req, res, next) => {
+  res.send(labs.data);
 });
 
 app.get("/mpg/en", (req, res, next) => {
-  res.send(hundredRandom(enUSdic));
+  res.send(mpg.hundredRandom('en'));
 });
 
 app.get("/mpg/br", (req, res, next) => {
-  res.send(hundredRandom(ptBRdic));
+  res.send(mpg.hundredRandom('ptbr'));
 });
-
 
 // App start
 let port = process.env.PORT || 8080;

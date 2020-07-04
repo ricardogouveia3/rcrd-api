@@ -17,11 +17,11 @@ app.use(function (req, res, next) {
 
 
 // Endpoints
-app.get("/rcrd/portfolio", (req, res, next) => {
-  res.send(portfolio.data);
+app.get("/portfolio", (req, res, next) => {
+  res.send(portfolio);
 });
 
-app.get("/rcrd/labs", (req, res, next) => {
+app.get("/labs", (req, res, next) => {
   res.send(labs.data);
 });
 

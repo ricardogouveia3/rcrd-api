@@ -33,6 +33,6 @@ app.get("/mpg/br", (req, res, next) => {
   res.send(mpg.hundredRandom('ptbr'));
 });
 
-// App start
-// let port = process.env.PORT || 8080;
-// app.listen(port);
+//App start
+let port = 3000;
+app.listen(port);

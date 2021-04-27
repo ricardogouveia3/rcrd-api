@@ -1,0 +1,11 @@
+---
+application:
+  name: "rcrd-api"
+  project: "RCRD API"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-rcrd-api"
+  routes:
+  - application_name: "rcrd-api"
+    paths:
+    - "/*"

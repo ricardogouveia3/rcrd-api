@@ -6,6 +6,9 @@ application:
   port: 3000
 routers:
 - name: "main-rcrd-api"
+  custom_domains:
+  - branch: master
+    domain: api.rcrd.me
   routes:
   - application_name: "rcrd-api"
     paths:

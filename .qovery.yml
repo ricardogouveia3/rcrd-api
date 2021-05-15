@@ -7,7 +7,7 @@ application:
 routers:
 - name: "main-rcrd-api"
   custom_domains:
-  - branch: master
+  - branch: main
     domain: api.rcrd.me
   routes:
   - application_name: "rcrd-api"

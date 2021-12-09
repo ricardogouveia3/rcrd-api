@@ -1,5 +1,7 @@
 # RCRD API
 
+_*ESTE PROJETO FOI DEPRECIADO E NÃO É MAIS MANTIDO*_
+
 API de retorno de dados para o RCRD e sub-apps
 
 ## Endpoints

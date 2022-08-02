@@ -1,5 +1,5 @@
 // main variables and requires
-const http = require('http');
+const https = require('https');
 const backupPortfolio = require('./../data/backup_portfolio.json');
 
 const exportable = {
@@ -10,40 +10,38 @@ const exportable = {
   data: {}
 };
 
-// Modules
-const spreadsheetParse = require('./spreadsheet-parse');
 
 // request to google spreadsheets
-const url = {
-  host: 'spreadsheets.google.com',
-  path: '/feeds/cells/1B7WNCHRulCXZQjIJWiBgAyfZLQ4hMDK25x-YLxGwvzQ/1/public/full?alt=json'
-};
+const sheetyApiUrl = "https://api.sheety.co/e65e4144b92f13f5ed263fb790fc0559/rcrdPortfolio/prod";
 
 // prepare request and return data
-requestMaker = function(response) {
-  let data = '';
+requestMaker = (response) => {
+  let data = [];
 
-  response.on('data', function (newData) {
+  response.on('data', (newData) => {
     data += newData;
   });
 
-  response.on('error', function(error){
+  response.on('error', (error) => {
     useBackupData(error);
    });
 
-  response.on('end', function () {
+  response.on('end', () => {
     try {
-      const parsedData = JSON.parse(data);
-      const arrayFormatedData = spreadsheetParse.parseSpreadsheetJsonIntoArray(parsedData);
-      const portfolioFormatedData = spreadsheetParse.portfolioObjectCreator(arrayFormatedData);
+      data = JSON.parse(data);
 
-      exportable.data = portfolioFormatedData;
+      if (data.errors) {
+        const error = { message: data.errors[0].detail };
+        useBackupData(error);
+      } else {
+        exportable.data = data.prod;
+      }
     } catch (error) {
       useBackupData(error);
     }
   });
 
-  useBackupData = function (error) {
+  useBackupData = (error) => {
     exportable.status.fromBackup = true;
     exportable.status.error = error.message;
     exportable.data = backupPortfolio;
@@ -51,7 +49,7 @@ requestMaker = function(response) {
 },
 
 // make request
-http.request(url, requestMaker).end();
+https.request(sheetyApiUrl, requestMaker).end();
 
 // module export
 module.exports = exportable;

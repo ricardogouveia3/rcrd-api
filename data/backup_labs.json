@@ -5,10 +5,8 @@
     "color": "#E74C3C",
     "link": "https://rcrd.me/amut/",
     "imgLink": "",
-    "state": {
-      "experimental": true,
-      "maintained": true
-    },
+    "experimental": true,
+    "maintained": true,
     "tags": []
   },
   {
@@ -17,10 +15,8 @@
     "color": "#4A4A4A",
     "link": "https://rcrd.me/mpg/",
     "imgLink": "",
-    "state": {
-      "experimental": true,
-      "maintained": false
-    },
+    "experimental": true,
+    "maintained": true,
     "tags": []
   },
   {
@@ -29,10 +25,8 @@
     "color": "#FFC355",
     "link": "https://rcrd.me/lbcm/",
     "imgLink": "",
-    "state": {
-      "experimental": true,
-      "maintained": true
-    },
+    "experimental": true,
+    "maintained": true,
     "tags": []
   }
 ]

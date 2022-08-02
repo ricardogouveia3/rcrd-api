@@ -1,5 +1,5 @@
 // main variables and requires
-const http = require('http');
+const https = require('https');
 const backupLabs = require('./../data/backup_labs.json');
 
 const exportable = {
@@ -10,14 +10,8 @@ const exportable = {
   data: {}
 };
 
-// Modules
-const spreadsheetParse = require('./spreadsheet-parse');
-
 // request to google spreadsheets
-const url = {
-  host: 'spreadsheets.google.com',
-  path: '/feeds/cells/1mrRoJeyxxZI0PNQpIdyI7ertijLFt-A_VL32g52kR9w/1/public/full?alt=json'
-};
+const sheetyApiUrl = "https://api.sheety.co/e65e4144b92f13f5ed263fb790fc0559/rcrdLabs/prod";
 
 // prepare request and return data
 requestMaker = function(response) {
@@ -31,13 +25,16 @@ requestMaker = function(response) {
     useBackupData(error);
    });
 
-  response.on('end', function () {
+   response.on('end', () => {
     try {
-      const parsedData = JSON.parse(data);
-      const arrayFormatedData = spreadsheetParse.parseSpreadsheetJsonIntoArray(parsedData);
-      const labsFormatedData = spreadsheetParse.labsObjectCreator(arrayFormatedData);
-  
-      exportable.data = labsFormatedData;
+      data = JSON.parse(data);
+
+      if (data.errors) {
+        const error = { message: data.errors[0].detail };
+        useBackupData(error);
+      } else {
+        exportable.data = data.prod;
+      }
     } catch (error) {
       useBackupData(error);
     }
@@ -51,7 +48,7 @@ requestMaker = function(response) {
 },
 
 // make request
-http.request(url, requestMaker).end();
+https.request(sheetyApiUrl, requestMaker).end();
 
 // module export
 module.exports = exportable;

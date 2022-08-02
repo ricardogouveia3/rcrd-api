@@ -1,6 +1,7 @@
 // Main deps
 const express = require("express");
 const app = express();
+const port = process.env.PORT || 3000
 
 // Modules
 const labs = require('./modules/labs');
@@ -16,6 +17,10 @@ app.use(function (req, res, next) {
 
 
 // Endpoints
+app.get("/", (req, res, next) => {
+  res.send("Hello world! Welcome to RCRD API. Listening port "+ port + ". Request to an endpoint to begin...");
+});
+
 app.get("/portfolio", (req, res, next) => {
   res.send(portfolio);
 });
@@ -25,6 +30,6 @@ app.get("/labs", (req, res, next) => {
 });
 
 //App start
-let port = 3000;
-console.log("App starting on " + port);
-app.listen(port);
+app.listen(port, () => {
+  console.log("App listening at " + port);
+});

@@ -21,9 +21,10 @@ app.get("/portfolio", (req, res, next) => {
 });
 
 app.get("/labs", (req, res, next) => {
-  res.send(labs.data);
+  res.send(labs);
 });
 
 //App start
 let port = 3000;
+console.log("App starting on " + port);
 app.listen(port);

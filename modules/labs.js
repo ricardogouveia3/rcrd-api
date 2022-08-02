@@ -3,6 +3,10 @@ const http = require('http');
 const backupLabs = require('./../data/backup_labs.json');
 
 const exportable = {
+  status: {
+    fromBackup: false,
+    error: "",
+  },
   data: {}
 };
 
@@ -23,8 +27,8 @@ requestMaker = function(response) {
     data += newData;
   });
 
-  response.on('error', function(thisError){
-    exportable.data = {};
+  response.on('error', function(error){
+    useBackupData(error);
    });
 
   response.on('end', function () {
@@ -35,9 +39,15 @@ requestMaker = function(response) {
   
       exportable.data = labsFormatedData;
     } catch (error) {
-      exportable.data = backupLabs;
+      useBackupData(error);
     }
   });
+
+  useBackupData = function (error) {
+    exportable.status.fromBackup = true;
+    exportable.status.error = error.message;
+    exportable.data = backupLabs;
+  };
 },
 
 // make request

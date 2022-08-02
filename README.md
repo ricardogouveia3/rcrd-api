@@ -1,15 +1,11 @@
 # RCRD API
 
-_*ESTE PROJETO FOI DEPRECIADO E NÃO É MAIS MANTIDO*_
-
-API de retorno de dados para o RCRD e sub-apps
+API for my personal website ([RCRD](https://rcrd.dev)) and projects.
 
 ## Endpoints
 
 - [RCRD portfolio](https://api.rcrd.me/portfolio)
 - [RCRD labs](https://api.rcrd.me/labs)
-- [MPG English dic](https://api.rcrd.me/mpg/en)
-- [MPG Brazilian Portuguese dic](https://api.rcrd.me/mpg/br)
 
 ## License
 

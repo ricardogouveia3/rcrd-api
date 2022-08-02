@@ -8,7 +8,7 @@ const portfolio = require('./modules/portfolio');
 
 
 // Global config
-app.use(function (res, next) {
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
@@ -16,11 +16,11 @@ app.use(function (res, next) {
 
 
 // Endpoints
-app.get("/portfolio", (res) => {
+app.get("/portfolio", (req, res, next) => {
   res.send(portfolio);
 });
 
-app.get("/labs", (res) => {
+app.get("/labs", (req, res, next) => {
   res.send(labs.data);
 });
 

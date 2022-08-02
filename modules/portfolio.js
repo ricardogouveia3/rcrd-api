@@ -1,5 +1,7 @@
 // main variables and requires
 const http = require('http');
+const backupPortfolio = require('./../data/backup_portfolio.json');
+
 const exportable = {
   data: {}
 };
@@ -26,11 +28,15 @@ requestMaker = function(response) {
    });
 
   response.on('end', function () {
-    const parsedData = JSON.parse(data);
-    const arrayFormatedData = spreadsheetParse.parseSpreadsheetJsonIntoArray(parsedData);
-    const portfolioFormatedData = spreadsheetParse.portfolioObjectCreator(arrayFormatedData);
+    try {
+      const parsedData = JSON.parse(data);
+      const arrayFormatedData = spreadsheetParse.parseSpreadsheetJsonIntoArray(parsedData);
+      const portfolioFormatedData = spreadsheetParse.portfolioObjectCreator(arrayFormatedData);
 
-    exportable.data = portfolioFormatedData;
+      exportable.data = portfolioFormatedData;
+    } catch (error) {
+      exportable.data = backupPortfolio;
+    }
   });
 },
 

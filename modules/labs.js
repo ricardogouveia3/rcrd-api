@@ -1,5 +1,7 @@
 // main variables and requires
 const http = require('http');
+const backupLabs = require('./../data/backup_labs.json');
+
 const exportable = {
   data: {}
 };
@@ -26,11 +28,15 @@ requestMaker = function(response) {
    });
 
   response.on('end', function () {
-    const parsedData = JSON.parse(data);
-    const arrayFormatedData = spreadsheetParse.parseSpreadsheetJsonIntoArray(parsedData);
-    const labsFormatedData = spreadsheetParse.labsObjectCreator(arrayFormatedData);
-
-    exportable.data = labsFormatedData;
+    try {
+      const parsedData = JSON.parse(data);
+      const arrayFormatedData = spreadsheetParse.parseSpreadsheetJsonIntoArray(parsedData);
+      const labsFormatedData = spreadsheetParse.labsObjectCreator(arrayFormatedData);
+  
+      exportable.data = labsFormatedData;
+    } catch (error) {
+      exportable.data = backupLabs;
+    }
   });
 },
 
